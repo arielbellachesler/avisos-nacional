@@ -11,7 +11,7 @@ WA_PHONE = os.environ["WA_PHONE"]
 WA_KEY = os.environ["WA_APIKEY"]
 
 TEAM_ID = 2356        # Club Nacional (Uruguay)
-FECHA_PRUEBA = ""     # para probar: "2026-09-06". Vacío ("") = uso normal
+FECHA_PRUEBA = "2026-09-06"    # para probar: "2026-09-06". Vacío ("") = uso normal
 
 TZ = "America/Montevideo"
 BASE = "https://v3.football.api-sports.io"
