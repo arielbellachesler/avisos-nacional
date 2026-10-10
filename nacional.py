@@ -51,7 +51,7 @@ def buscar_id_nacional():
     for item in candidatos:
         t = item["team"]
         print("Candidato:", t["id"], t["name"], t["country"])
-        if t["country"] == "Uruguay" and t["name"] == "Nacional":
+        if t["country"] == "Uruguay" and t["name"] == "Club Nacional":
             return t["id"]
     return None
 
