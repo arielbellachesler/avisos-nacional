@@ -1,0 +1,39 @@
+name: Avisos Nacional
+
+on:
+  schedule:
+    - cron: "*/20 0-3,10-23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: avisos-nacional
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - run: python nacional.py
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          WA_PHONE: ${{ secrets.WA_PHONE }}
+          WA_APIKEY: ${{ secrets.WA_APIKEY }}
+
+      - name: Guardar estado
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          if [ -f estado.json ]; then
+            git add estado.json
+            git diff --staged --quiet || (git commit -m "actualizar estado" && git push)
+          fi
