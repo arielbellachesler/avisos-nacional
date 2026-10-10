@@ -53,6 +53,7 @@ def main():
     hoy = FECHA_PRUEBA or datetime.now(ZoneInfo(TZ)).strftime("%Y-%m-%d")
 
     todos = api("fixtures", date=hoy, timezone=TZ)
+    print("Fecha consultada:", hoy, "| partidos devueltos por la API:", len(todos))
     partidos = [
         p for p in todos
         if TEAM_ID in (p["teams"]["home"]["id"], p["teams"]["away"]["id"])
