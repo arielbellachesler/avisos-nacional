@@ -11,8 +11,7 @@ WA_PHONE = os.environ["WA_PHONE"]
 WA_KEY = os.environ["WA_APIKEY"]
 
 TEAM_ID = 2356        # Club Nacional (Uruguay)
-    print("Fecha consultada:", hoy, "| partidos:", len(todos), "| de Uruguay:", sum(1 for p in todos if p["league"]["country"] == "Uruguay"))   # para probar: "2026-09-06". Vacío ("") = uso normal
-
+FECHA_PRUEBA = ""
 TZ = "America/Montevideo"
 BASE = "https://v3.football.api-sports.io"
 HEADERS = {"x-apisports-key": API_KEY}
@@ -53,7 +52,7 @@ def main():
     hoy = FECHA_PRUEBA or datetime.now(ZoneInfo(TZ)).strftime("%Y-%m-%d")
 
     todos = api("fixtures", date=hoy, timezone=TZ)
-    print("Fecha consultada:", hoy, "| partidos devueltos por la API:", len(todos))
+    print("Fecha consultada:", hoy, "| partidos:", len(todos), "| de Uruguay:", sum(1 for p in todos if p["league"]["country"] == "Uruguay"))
     partidos = [
         p for p in todos
         if TEAM_ID in (p["teams"]["home"]["id"], p["teams"]["away"]["id"])
