@@ -1,3 +1,9 @@
 {
-  "team_id": 2356
+  "team_id": 2356,
+  "partidos": {
+    "1643175": {
+      "aviso": true,
+      "resultado": false
+    }
+  }
 }
